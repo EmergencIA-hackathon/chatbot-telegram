@@ -1,6 +1,9 @@
-import telepot
+#!/usr/bin/python3
+#coding: utf-8 
+
+import telepot, time
 from telepot.loop import MessageLoop
-from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton #bibliotecas p/ os botões
 
 TOKEN = "7729451424:AAH_AC4x2B1-ETZB5JA9JweOpJCXl4nqq9w"
 
@@ -56,5 +59,4 @@ while True:
 
 
 
-# integrar bd -> melhorar tratamento e respostas *POSTGRES
 
