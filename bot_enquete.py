@@ -14,7 +14,7 @@ def handle_message(msg):
     print(f"Mensagem recebida de {chat_id}: {message_text}")
 
     # verificação
-    if message_text in ["olá", "oi", "ei", "bom dia", "boa tarde", "boa noite"]:
+    if message_text == '/start':
         response = "Olá! Gostaria de participar de uma enquete?"
         # botões de ação
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
