@@ -1,2 +1,2 @@
-telepot
+python-telegram-bot
 python-magic

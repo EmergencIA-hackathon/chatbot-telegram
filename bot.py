@@ -1,67 +1,67 @@
 #!/usr/bin/python3
 # coding: utf-8
 
-import telepot, time, magic
-from telepot.loop import MessageLoop
-from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+import asyncio
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, CallbackContext
 
 # Token do bot
 TOKEN = "7729451424:AAH_AC4x2B1-ETZB5JA9JweOpJCXl4nqq9w"
 
-# função para lidar com mensagens
-def principal(msg):
-    chat_id = msg['chat']['id']  # ID do chat
-    texto_mensagem = msg.get('text', '').lower()  # convertendo a mensagem para minúscula
+# Função para lidar com o comando /start
+async def start(update: Update, context: CallbackContext) -> None:
+    chat_id = update.message.chat_id
+    resposta = "Olá! Gostaria de participar de uma enquete?"
+    
+    # Criando botões inline
+    teclado = InlineKeyboardMarkup([
+        [InlineKeyboardButton(text="Sim", callback_data="enquete_sim"),
+         InlineKeyboardButton(text="Não", callback_data="enquete_nao")]
+    ])
+    
+    await update.message.reply_text(resposta, reply_markup=teclado)
+
+# Função para lidar com mensagens comuns
+async def responder(update: Update, context: CallbackContext) -> None:
+    chat_id = update.message.chat_id
+    texto_mensagem = update.message.text.lower()
 
     print(f"Mensagem recebida de {chat_id}: {texto_mensagem}")
 
-    # mensagens de início
-    if texto_mensagem in ['/start', 'olá', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'e aí', 'fala', 'hey', 'salve']:
-        resposta = "Olá! Gostaria de participar de uma enquete?"
-        
-        # botões de ação
-        teclado = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Sim", callback_data="enquete_sim"),
-             InlineKeyboardButton(text="Não", callback_data="enquete_nao")]
-        ])
-        bot.sendMessage(chat_id, resposta, reply_markup=teclado)
-    
-    # resposta para "tchau"
+    if texto_mensagem in ['olá', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'e aí', 'fala', 'hey', 'salve']:
+        await start(update, context)
     elif texto_mensagem == "tchau":
-        resposta = "Tchau! Tenha um ótimo dia!"
-        bot.sendMessage(chat_id, resposta)
-
-    # resposta padrão
+        await update.message.reply_text("Tchau! Tenha um ótimo dia!")
     else:
-        resposta = "Desculpe, não entendi sua mensagem. Tente novamente!"
-        bot.sendMessage(chat_id, resposta)
+        await update.message.reply_text("Desculpe, não entendi sua mensagem. Tente novamente!")
 
-# função para lidar com callbacks
-def callback(query):
-    query_id, from_id, dados = query['id'], query['from']['id'], query['data']
+# Função para lidar com callbacks de botões
+async def callback(update: Update, context: CallbackContext) -> None:
+    query = update.callback_query
+    await query.answer()  # Responde ao clique no botão
 
-    print(f"Callback recebido de {from_id}: {dados}")
+    print(f"Callback recebido de {query.from_user.id}: {query.data}")
 
-    # resposta de acordo com o botão clicado
-    if dados == "enquete_sim":
-        bot.sendMessage(from_id, "Obrigado por participar! Sua resposta foi: Sim.")
-    elif dados == "enquete_nao":
-        bot.sendMessage(from_id, "Tudo bem! Sua resposta foi: Não.")
+    if query.data == "enquete_sim":
+        await query.message.reply_text("Obrigado por participar! Sua resposta foi: Sim.")
+    elif query.data == "enquete_nao":
+        await query.message.reply_text("Tudo bem! Sua resposta foi: Não.")
     else:
-        bot.sendMessage(from_id, "Opção inválida.")
+        await query.message.reply_text("Opção inválida.")
 
-    # notificar o clique
-    bot.answerCallbackQuery(query_id)
+# Função principal para rodar o bot
+def main():
+    app = Application.builder().token(TOKEN).build()
 
-        
+    # Adicionando handlers
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
+    app.add_handler(CallbackQueryHandler(callback))
 
-# inicializando o bot
-bot = telepot.Bot(TOKEN)
+    print("Bot está rodando...")
+    app.run_polling()
 
-# configurando o bot para ouvir mensagens e interações
-MessageLoop(bot, {'chat': principal, 'callback_query': callback}).run_as_thread()
-print("Bot está funcionando...")
+# Iniciar o bot
+if __name__ == "__main__":
+    main()
 
-# manter em execução
-while True:
-    time.sleep(10)
