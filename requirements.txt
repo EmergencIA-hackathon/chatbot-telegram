@@ -1,2 +1,4 @@
-telepot
-python-magic
+pydub
+SpeechRecognition
+requests
+python-telegram-bot

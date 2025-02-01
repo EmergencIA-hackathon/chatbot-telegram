@@ -1,16 +1,17 @@
-FROM python:3.9-slim
+# Imagem base para Python
+FROM python:3.9
 
-# Instalar dependências do sistema
-RUN apt-get update && apt-get install -y libmagic1
+# Atualizar o sistema e instalar ffmpeg
+USER root
+RUN apt-get update && apt-get install -y ffmpeg
 
-# Configuração do diretório de trabalho
-WORKDIR /app
-
-# Copiar os arquivos para dentro do contêiner
-COPY . /app
-
-# Instalar as dependências do Python
+# Instalar dependências Python
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando para rodar a aplicação
+# Copiar o código para o container
+COPY . /app
+WORKDIR /app
+
+# Comando padrão
 CMD ["python", "bot.py"]

@@ -1,97 +1,113 @@
 #!/usr/bin/python3
 # coding: utf-8
 
-import telepot, time, magic, os
-from telepot.loop import MessageLoop
-from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+import asyncio
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, CallbackContext
+import requests
+import speech_recognition as sr
+from io import BytesIO
+from pydub import AudioSegment
+from tempfile import NamedTemporaryFile
 
-# token do bot
+# Token do bot
 TOKEN = "7729451424:AAH_AC4x2B1-ETZB5JA9JweOpJCXl4nqq9w"
 
-DOWNLOADS_DIR = "/app/downloads"
+# Função para lidar com o comando /start
+async def start(update: Update, context: CallbackContext) -> None:
+    chat_id = update.message.chat_id
+    resposta = "Olá! Gostaria de participar de uma enquete?"
+    
+    # Criando botões
+    teclado = InlineKeyboardMarkup([
+        [InlineKeyboardButton(text="Sim", callback_data="enquete_sim"),
+         InlineKeyboardButton(text="Não", callback_data="enquete_nao")]
+    ])
+    
+    await update.message.reply_text(resposta, reply_markup=teclado)
 
-# certificar-se de que a pasta de downloads existe
-if not os.path.exists(DOWNLOADS_DIR):
-    os.makedirs(DOWNLOADS_DIR)
+# Função para lidar com mensagens comuns
+async def responder(update: Update, context: CallbackContext) -> None:
+    chat_id = update.message.chat_id
+    texto_mensagem = update.message.text.lower()
 
-# função para lidar com mensagens
-def principal(msg):
-    content_type, chat_type, chat_id = telepot.glance(msg)
+    print(f"Mensagem recebida de {chat_id}: {texto_mensagem}")
 
-    if content_type in ['document', 'audio', 'voice']:
-        if content_type == 'document':
-            file_id = msg['document']['file_id']
-        elif content_type == 'audio':
-            file_id = msg['audio']['file_id']
-        elif content_type == 'voice':
-            file_id = msg['voice']['file_id']
-
-        # obtendo informações do arquivo e baixando
-        file_info = bot.getFile(file_id)
-        file_path = file_info['file_path']
-        file_name = os.path.join(DOWNLOADS_DIR, file_path.split("/")[-1])
-
-        bot.download_file(file_id, file_name)
-
-        # identificando o tipo de arquivo
-        mime = magic.Magic(mime=True)
-        file_type = mime.from_file(file_name)
-
-        bot.sendMessage(chat_id, f"Arquivo baixado com sucesso! Tipo: {file_type}")
-
-        # p/ arquivos de áudio
-        if file_type.startswith("audio"):
-            bot.sendMessage(chat_id, "Arquivo de áudio identificado! Transcrição em desenvolvimento.")
-
-    elif content_type == 'text':
-        texto_mensagem = msg.get('text', '').lower()
-        print(f"Mensagem recebida de {chat_id}: {texto_mensagem}")
-
-        # mensagem inicial
-        if texto_mensagem in ['/start', 'olá', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'e aí', 'e ai', 'fala', 'hey', 'salve']:
-            resposta = "Olá! Gostaria de participar de uma enquete?"
-
-            # botões de ação
-            teclado = InlineKeyboardMarkup(inline_keyboard=[
-                [InlineKeyboardButton(text="Sim", callback_data="enquete_sim"),
-                InlineKeyboardButton(text="Não", callback_data="enquete_nao")]
-            ])
-            bot.sendMessage(chat_id, resposta, reply_markup=teclado)
-
-        # resposta para "tchau"
-        elif texto_mensagem == "tchau":
-            resposta = "Tchau! Tenha um ótimo dia!"
-            bot.sendMessage(chat_id, resposta)
-
-        # resposta padrão
-        else:
-            resposta = "Desculpe, não entendi sua mensagem. Tente novamente!"
-            bot.sendMessage(chat_id, resposta)
-
-# função para lidar com callbacks
-def callback(query):
-    query_id, from_id, dados = query['id'], query['from']['id'], query['data']
-
-    print(f"Callback recebido de {from_id}: {dados}")
-
-    # resposta de acordo com o botão clicado
-    if dados == "enquete_sim":
-        bot.sendMessage(from_id, "Obrigado por participar! Sua resposta foi: Sim.")
-    elif dados == "enquete_nao":
-        bot.sendMessage(from_id, "Tudo bem! Sua resposta foi: Não.")
+    if texto_mensagem in ['olá', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'e aí', 'fala', 'hey', 'salve']:
+        await start(update, context)
+    elif texto_mensagem == "tchau":
+        await update.message.reply_text("Tchau! Tenha um ótimo dia!")
     else:
-        bot.sendMessage(from_id, "Opção inválida.")
+        await update.message.reply_text("Desculpe, não entendi sua mensagem. Tente novamente!")
 
-    # notificar o clique
-    bot.answerCallbackQuery(query_id)
+# Função para lidar com callbacks 
+async def callback(update: Update, context: CallbackContext) -> None:
+    query = update.callback_query
+    await query.answer()  # Responde ao clique no botão
 
-# inicializando o bot
-bot = telepot.Bot(TOKEN)
+    print(f"Callback recebido de {query.from_user.id}: {query.data}")
 
-# configurando o bot para ouvir mensagens e interações
-MessageLoop(bot, {'chat': principal, 'callback_query': callback}).run_as_thread()
-print("Bot está funcionando...")
+    if query.data == "enquete_sim":
+        await query.message.reply_text("Obrigado por participar! Sua resposta foi: Sim.")
+    elif query.data == "enquete_nao":
+        await query.message.reply_text("Tudo bem! Sua resposta foi: Não.")
+    else:
+        await query.message.reply_text("Opção inválida.")
 
-# manter em execução
-while True:
-    time.sleep(10)
+# Função para transcrever áudio
+async def transcrever_audio(file_url: str) -> str:
+    recognizer = sr.Recognizer()
+
+    # Fazendo download do arquivo diretamente da URL (API Telegram)
+    audio_response = requests.get(file_url)
+    if audio_response.status_code == 200:
+        audio_data = BytesIO(audio_response.content)
+
+        try:
+            # Converter para WAV usando pydub (caso não esteja no formato correto)
+            audio = AudioSegment.from_file(audio_data)
+            with NamedTemporaryFile(delete=True) as temp_wav_file:
+                audio.export(temp_wav_file, format="wav")
+                temp_wav_file.seek(0)
+                
+                # Usar o speech_recognition para reconhecer o áudio
+                with sr.AudioFile(temp_wav_file.name) as source:
+                    audio = recognizer.record(source)
+                    texto = recognizer.recognize_google(audio, language='pt-BR')
+                    return texto
+        except Exception as e:
+            return f"Erro ao processar o áudio: {str(e)}"
+    return "Erro ao baixar o áudio."
+
+# Função para lidar com áudio e mensagens de voz
+async def handle_audio(update: Update, context: CallbackContext) -> None:
+    # Verifica se é áudio ou voice
+    file_id = update.message.voice.file_id if update.message.voice else update.message.audio.file_id
+
+    # Pega a URL do arquivo usando o Telegram API
+    file = await context.bot.get_file(file_id)
+    file_url = file.file_path
+
+    # Transcreve o áudio
+    transcricao = await transcrever_audio(file_url)
+
+    # Envia a transcrição de volta ao usuário
+    await update.message.reply_text(f"Transcrição: {transcricao}")
+
+# Função principal para rodar o bot
+def main():
+    app = Application.builder().token(TOKEN).build()
+
+    # Adicionando handlers
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
+    app.add_handler(CallbackQueryHandler(callback))
+    # Handlers para mensagens de áudio e voz
+    app.add_handler(MessageHandler(filters.AUDIO | filters.VOICE, handle_audio))
+
+    print("Bot está rodando...")
+    app.run_polling()
+
+# Iniciar o bot
+if __name__ == "__main__":
+    main()
