@@ -1,2 +1,4 @@
+pydub
+SpeechRecognition
+requests
 python-telegram-bot
-python-magic
