@@ -9,7 +9,7 @@ import speech_recognition as sr
 from io import BytesIO
 from pydub import AudioSegment
 from tempfile import NamedTemporaryFile
-
+from local import obter_endereco_geocodexyz
 # Token do bot
 TOKEN = "7729451424:AAH_AC4x2B1-ETZB5JA9JweOpJCXl4nqq9w"
 
@@ -106,7 +106,11 @@ async def receber_localizacao(update, context):
     if update.message and update.message.location:  # Verifica se a mensagem e a localização estão presentes
         latitude = update.message.location.latitude
         longitude = update.message.location.longitude
-        await update.message.reply_text(f"📍 Localização recebida!\nLatitude: {latitude}\nLongitude: {longitude}")
+        endereco = obter_endereco_geocodexyz(latitude, longitude)
+        await update.message.reply_text(f"📍 Localização recebida!\nLatitude: {latitude}\nLongitude: {longitude}\nENDEREÇO: {endereco}")
+      
+       
+
     elif update.message:  # Verifica se a mensagem está presente antes de tentar responder
         await update.message.reply_text("Não foi possível obter a sua localização.")
 
