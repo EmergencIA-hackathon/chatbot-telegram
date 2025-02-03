@@ -2,8 +2,8 @@
 # coding: utf-8
 
 import asyncio
-from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
-from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, CallbackContext
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton 
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, CallbackContext, Application
 import requests
 import speech_recognition as sr
 from io import BytesIO
@@ -94,6 +94,23 @@ async def handle_audio(update: Update, context: CallbackContext) -> None:
     # Envia a transcrição de volta ao usuário
     await update.message.reply_text(f"Transcrição: {transcricao}")
 
+
+
+# FUNÇÃO PARA PEDIR A LOCALIZAÇÃO
+def pedir_localizacao(update, context):
+    keyboard = [[KeyboardButton("📍 Compartilhar Localização", request_location=True)]]
+    reply_markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True)
+    update.message.reply_text("Clique no botão abaixo para compartilhar sua localização em tempo real:", reply_markup=reply_markup)
+
+async def receber_localizacao(update, context):
+    if update.message and update.message.location:  # Verifica se a mensagem e a localização estão presentes
+        latitude = update.message.location.latitude
+        longitude = update.message.location.longitude
+        await update.message.reply_text(f"📍 Localização recebida!\nLatitude: {latitude}\nLongitude: {longitude}")
+    elif update.message:  # Verifica se a mensagem está presente antes de tentar responder
+        await update.message.reply_text("Não foi possível obter a sua localização.")
+
+
 # Função principal para rodar o bot
 def main():
     app = Application.builder().token(TOKEN).build()
@@ -104,6 +121,10 @@ def main():
     app.add_handler(CallbackQueryHandler(callback))
     # Handlers para mensagens de áudio e voz
     app.add_handler(MessageHandler(filters.AUDIO | filters.VOICE, handle_audio))
+    #handlers para a localização
+    app.add_handler(MessageHandler(filters.TEXT & filters.Regex("📍 Compartilhar Localização"), pedir_localizacao))
+    app.add_handler(MessageHandler(filters.LOCATION, receber_localizacao)) 
+
 
     print("Bot está rodando...")
     app.run_polling()
