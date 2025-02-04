@@ -5,13 +5,15 @@ FROM python:3.9
 USER root
 RUN apt-get update && apt-get install -y ffmpeg
 
-# Instalar dependências Python
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copiar o código para o container
-COPY . /app
+# Definir diretório de trabalho
 WORKDIR /app
 
+# Copiar e instalar dependências
+COPY requirements.txt .
+RUN pip install -r /app/requirements.txt
+
+# Copiar o código para o container
+COPY . .
+
 # Comando padrão
-CMD ["python", "bot.py"]
+CMD ["python", "flask-app/app.py"]
