@@ -3,3 +3,4 @@ SpeechRecognition
 requests
 python-telegram-bot
 flask
+aiohttp

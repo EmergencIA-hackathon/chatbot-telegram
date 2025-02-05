@@ -30,3 +30,4 @@ async def handle_audio(update: Update, context: CallbackContext) -> None:
     file_url = file.file_path
     transcricao = await transcrever_audio(file_url)
     await update.message.reply_text(f"Transcrição: {transcricao}")
+

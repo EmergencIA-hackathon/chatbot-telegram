@@ -11,6 +11,7 @@ async def start(update: Update, context: CallbackContext) -> None:
 
 async def responder(update: Update, context: CallbackContext) -> None:
     texto_mensagem = update.message.text.lower()
+    print(f"Mensagem recebida: {texto_mensagem}")  # Debug
     if texto_mensagem in ['olá', 'oi', 'bom dia', 'boa tarde', 'boa noite']:
         await start(update, context)
     elif texto_mensagem == "tchau":
