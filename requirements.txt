@@ -4,3 +4,9 @@ requests
 python-telegram-bot
 flask
 aiohttp
+gunicorn
+Flask[async]
+python-dotenv
+
+
+

@@ -1,9 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_app.controllers.bot_controller import main
 from telegram import Update
-from telegram.ext import CallbackContext
 from telegram import Bot
+from telegram.ext import Application
 import asyncio
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Carrega as variáveis de ambiente do .env
 
 app = Flask(__name__)
 
@@ -12,13 +16,15 @@ def index():
     return "Servidor Flask funcionando!" 
 
 @app.route('/webhook', methods=['POST'])
-def webhook():
+async def webhook():
     data = request.get_json()
 
-    # Criar objeto Update do Telegram com os dados recebidos
-    update = Update.de_json(data, bot=Bot(token="7729451424:AAH_AC4x2B1-ETZB5JA9JweOpJCXl4nqq9w"))
+    bot = Bot(token=os.getenv("TELEGRAM_BOT_TOKEN"))
+    update = Update.de_json(data, bot=bot)
 
-    asyncio.run(main(update))
+    application = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
+    await application.initialize()  
+    await main(update, application)
 
     return 'Webhook recebido', 200
 

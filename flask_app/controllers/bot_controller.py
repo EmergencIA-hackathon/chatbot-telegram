@@ -1,14 +1,13 @@
 from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, CallbackContext
-from config import TOKEN
+import os
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters
 from services.message_service import responder, start, callback
 from services.audio_service import handle_audio
 from services.location_service import pedir_localizacao, receber_localizacao
 
-async def main(update: Update):
-    app = Application.builder().token(TOKEN).build()
-    await app.initialize() 
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
+async def main(update: Update, app: Application):
     # Adicionando handlers
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
@@ -21,8 +20,6 @@ async def main(update: Update):
 
     await app.process_update(update)
 
-    webhook_url = "https://14ee-177-85-89-185.ngrok-free.app/webhook"
-    app.bot.set_webhook(url=webhook_url)
 
 if __name__ == "__main__":
     pass

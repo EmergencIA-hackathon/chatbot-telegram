@@ -10,9 +10,8 @@ WORKDIR /app
 
 # Copiar e instalar dependências
 COPY requirements.txt .
-RUN pip install -r requirements.txt
 RUN pip install aiohttp
-
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar o código para o container
 COPY . .
