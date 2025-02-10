@@ -22,5 +22,14 @@ ENV PYTHONPATH=/app
 # Definir diretório correto para rodar o app
 WORKDIR /app/flask_app
 
+# Copiar o script para o container
+COPY set_webhook.sh /app/set_webhook.sh
+
+# Garantir que o script tenha permissão de execução
+RUN chmod +x /app/set_webhook.sh
+
+# Expor a porta para o app Flask
+EXPOSE 5000
+
 # Comando padrão para rodar o container
-CMD ["python", "app.py"]
+CMD /app/set_webhook.sh && gunicorn -w 1 -b 0.0.0.0:5000 app:app
