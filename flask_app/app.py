@@ -17,23 +17,15 @@ def index():
     return "Servidor Flask funcionando!"
 
 @app.route('/webhook', methods=['POST'])
-def webhook():
-    try:
-        data = request.get_json()
-        print("Dados recebidos:", data)
-
-        if 'message' not in data or 'date' not in data['message']:
-            return jsonify({"error": "Formato inválido"}), 400
-
-        update = Update.de_json(data, bot=bot)
-        asyncio.run(application.initialize())
-        asyncio.run(main(update, application))
-
-        return 'Webhook recebido', 200
-
-    except Exception as e:
-        print("Erro:", e)
-        return jsonify({"error": str(e)}), 500
+async def webhook():
+    data = request.get_json()
+    bot = Bot(token=os.getenv("TELEGRAM_BOT_TOKEN"))
+    update = Update.de_json(data, bot=bot)
+    application = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
+    await application.initialize()  
+    await main(update, application)
+    return 'Webhook recebido', 200
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
+
