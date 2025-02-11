@@ -29,5 +29,7 @@ async def handle_audio(update: Update, context: CallbackContext) -> None:
     file = await context.bot.get_file(file_id)
     file_url = file.file_path
     transcricao = await transcrever_audio(file_url)
-    await update.message.reply_text(f"Transcrição: {transcricao}")
-
+    await update.message.reply_text(
+        f"📝 Ocorrência registrada com sucesso: '{transcricao}'\nDeseja registrar mais alguma coisa? (sim/não)"
+    )
+    context.user_data["registrando_ocorrencia"] = True

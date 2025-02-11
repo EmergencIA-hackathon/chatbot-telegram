@@ -19,6 +19,5 @@ async def main(update: Update, app: Application):
 
     await app.process_update(update)
 
-
 if __name__ == "__main__":
     pass
