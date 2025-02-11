@@ -1,13 +1,32 @@
+version: '3.8'
+
 services:
   telegram-bot:
     build:
-      context: .
+      context: .  
       dockerfile: Dockerfile
     container_name: telegram-bot-container
     volumes:
-      - .:/app
+      - ./flask_app:/app/flask_app
+      - ./.venv:/app/.venv
     environment:
       - PYTHONUNBUFFERED=1
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+    env_file:
+      - .env  
     ports:
       - "5000:5000"
     restart: unless-stopped
+    working_dir: /app/flask_app    
+    depends_on:
+      - ngrok
+    command: ["python", "app.py"] 
+
+  ngrok:
+    image: wernight/ngrok
+    container_name: ngrok
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN} 
+      - NGROK_PORT=telegram-bot:5000
+    ports:
+      - "4041:4040"  # Porta para acessar o dashboard do ngrok e ver os túneis
