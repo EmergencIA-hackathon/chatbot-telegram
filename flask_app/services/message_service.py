@@ -1,82 +1,109 @@
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext
 import re
+import json
+import requests
 
-# mapeando se o usuário já respondeu a enquete
+# mapeando o estado do usuário no registro de ocorrência
 usuario_em_registro = {}
+
+API_URL = "https://suaapi.com/ocorrencias"  
 
 async def start(update: Update, context: CallbackContext) -> None:
     resposta = (
         "Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\n"
-        "Posso te ajudar a registrar algo?"
+        "Envie sua ocorrência diretamente ou clique abaixo para começar."
     )
     teclado = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton(text="Sim, registrar ocorrência", callback_data="enquete_ocorrencia"),
-            InlineKeyboardButton(text="Quero saber mais sobre o serviço", callback_data="enquete_servico")
+            InlineKeyboardButton(text="Registrar ocorrência", callback_data="enquete_ocorrencia"),
+            InlineKeyboardButton(text="Saber mais sobre o serviço", callback_data="enquete_servico")
         ]
     ])
     await update.message.reply_text(resposta, reply_markup=teclado)
 
-# lidar com texto
+# lidar com mensagens de texto
 async def responder(update: Update, context: CallbackContext) -> None:
-    texto_mensagem = update.message.text.strip().lower()
+    texto_mensagem = update.message.text.strip()
     user_id = update.message.from_user.id
 
-    print(f"Mensagem recebida: {texto_mensagem}")  # Debug
-
-    if user_id in usuario_em_registro:
-        if usuario_em_registro[user_id] == 'registrando_ocorrencia':
-            # Registrar ocorrência
-            if texto_mensagem:
-                await update.message.reply_text(
-                    f"📝 Ocorrência registrada: {texto_mensagem}\n"
-                    "Deseja registrar mais alguma coisa? (sim/não)"
-                )
-                usuario_em_registro[user_id] = 'esperando_confirmacao'
-                return
-
-        elif usuario_em_registro[user_id] == 'esperando_confirmacao':
-            if texto_mensagem in ['sim', 's']:
-                await update.message.reply_text("Por favor, envie sua próxima ocorrência.")
-                usuario_em_registro[user_id] = 'registrando_ocorrencia'
-            elif texto_mensagem in ['não', 'nao', 'não quero mais registrar']:
-                await update.message.reply_text("Obrigado por registrar sua ocorrência. Fique à vontade para voltar quando precisar.")
-                del usuario_em_registro[user_id]
-            else:
-                await update.message.reply_text("Desculpe, não entendi sua resposta. Deseja registrar mais alguma coisa? (sim/não)")
-
-    else:
-        # Detectar saudação usando regex para capturar variações
-        padrao_saudacao = r"\b(olá|oi{1,3}|bom dia|boa tarde|boa noite|ei|hello|hey|salve)\b"
-        if re.search(padrao_saudacao, texto_mensagem):
-            await start(update, context)
-        elif texto_mensagem == "tchau":
-            await update.message.reply_text("Tchau! Tenha um ótimo dia!")
-        else:
-            # Mensagem genérica para ocorrências não reconhecidas
+    if user_id not in usuario_em_registro:
+        # se o usuário já enviou uma ocorrência, registrar automaticamente
+        if not re.search(r"\b(olá|oi|bom dia|boa tarde|boa noite|ei|hello|hey|salve)\b", texto_mensagem, re.IGNORECASE):
+            usuario_em_registro[user_id] = {
+                "ocorrencias": [],
+                "fotos": [],
+                "audios": [],
+                "videos": [],
+                "localizacoes": []
+            }
+            usuario_em_registro[user_id]["ocorrencias"].append(texto_mensagem)
             await update.message.reply_text(
-                "Desculpe, não entendi sua mensagem. Se for uma ocorrência, "
-                "envie texto, foto, áudio ou localização para registro."
+                f"📝 Ocorrência registrada: '{texto_mensagem}'\n"
+                "Deseja registrar mais alguma coisa? (sim/não)"
             )
+            return
 
-# callback para botões da enquete
+        await start(update, context)
+        return
+
+    estado_atual = usuario_em_registro[user_id]
+
+    if texto_mensagem.lower() in ['sim', 's']:
+        await update.message.reply_text("Pode enviar mais detalhes: texto, foto, áudio, vídeo ou localização.")
+        return
+
+    if texto_mensagem.lower() in ['não', 'nao', 'n', 'não quero mais registrar']:
+        await finalizar_ocorrencia(update, user_id)
+        return
+
+    # se for uma nova ocorrência, armazenar
+    estado_atual["ocorrencias"].append(texto_mensagem)
+    await update.message.reply_text(
+        f"📝 Ocorrência registrada: '{texto_mensagem}'\n"
+        "Deseja registrar mais alguma coisa? (sim/não)"
+    )
+
+# finalizar e enviar a ocorrência para a API
+async def finalizar_ocorrencia(update: Update, user_id: int):
+    dados_ocorrencia = usuario_em_registro.pop(user_id, None)
+    if not dados_ocorrencia:
+        await update.message.reply_text("Erro ao processar a ocorrência. Tente novamente.")
+        return
+
+    # criar JSON para envio
+    payload = json.dumps(dados_ocorrencia, ensure_ascii=False)
+    response = requests.post(API_URL, data=payload, headers={"Content-Type": "application/json"})
+
+    if response.status_code == 200:
+        await update.message.reply_text("✅ Sua ocorrência foi enviada com sucesso para os agentes!")
+    else:
+        await update.message.reply_text(f"⚠️ Erro ao enviar a ocorrência. Código: {response.status_code}")
+
+# callback para botões de enquete
 async def callback(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     user_id = query.from_user.id
     await query.answer()
 
     if query.data == "enquete_ocorrencia":
-        usuario_em_registro[user_id] = 'registrando_ocorrencia'
+        usuario_em_registro[user_id] = {
+            "ocorrencias": [],
+            "fotos": [],
+            "audios": [],
+            "videos": [],
+            "localizacoes": []
+        }
         await query.message.reply_text(
-            "📝 Perfeito! Envie agora sua ocorrência. Pode ser uma descrição por texto, foto, áudio ou localização."
+            "📝 Envie agora sua ocorrência. Pode ser uma descrição por texto, foto, áudio, vídeo ou localização."
         )
     elif query.data == "enquete_servico":
         await query.message.reply_text(
-            "Nós registramos qualquer tipo de ocorrência, independente da situação. Conte com a gente para registrar e encaminhar seu relato! Você pode enviar:\n"
+            "Nós registramos qualquer tipo de ocorrência. Você pode enviar:\n"
             "📄 Texto explicando o ocorrido\n"
             "📸 Fotos\n"
             "🎤 Áudios\n"
+            "📹 Vídeos\n"
             "📍 Localizações\n"
-            "Nosso time de agentes analisará cada caso e entrará em contato se necessário."
+            "Nossa equipe analisará cada caso!"
         )

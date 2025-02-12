@@ -25,11 +25,18 @@ async def transcrever_audio(file_url: str) -> str:
     return "Erro ao baixar o áudio."
 
 async def handle_audio(update: Update, context: CallbackContext) -> None:
+    user_id = update.message.from_user.id
     file_id = update.message.voice.file_id if update.message.voice else update.message.audio.file_id
     file = await context.bot.get_file(file_id)
     file_url = file.file_path
+
     transcricao = await transcrever_audio(file_url)
+
+    if user_id in usuario_em_registro:
+        usuario_em_registro[user_id]["audios"].append(transcricao)
+    else:
+        usuario_em_registro[user_id] = {"ocorrencias": [], "fotos": [], "audios": [transcricao], "videos": [], "localizacoes": []}
+
     await update.message.reply_text(
-        f"📝 Ocorrência registrada com sucesso: '{transcricao}'\nDeseja registrar mais alguma coisa? (sim/não)"
+        f"📝 Áudio transcrito: '{transcricao}'\nDeseja registrar mais alguma coisa? (sim/não)"
     )
-    context.user_data["registrando_ocorrencia"] = True
