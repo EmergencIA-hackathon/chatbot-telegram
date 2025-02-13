@@ -1,9 +1,12 @@
 # Imagem base para Python
 FROM python:3.9
 
-# Atualizar o sistema e instalar ffmpeg
+# Atualizar o sistema e instalar dependências
 USER root
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    tesseract-ocr \
+    libtesseract-dev
 
 # Definir diretório de trabalho
 WORKDIR /app
@@ -18,6 +21,9 @@ COPY . .
 
 # Definir variável para garantir que Flask reconheça o diretório correto
 ENV PYTHONPATH=/app
+
+# Definir caminho do Tesseract para o pytesseract
+ENV TESSERACT_CMD=/usr/bin/tesseract
 
 # Definir diretório correto para rodar o app
 WORKDIR /app/flask_app
