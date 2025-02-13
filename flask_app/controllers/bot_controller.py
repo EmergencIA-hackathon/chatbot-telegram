@@ -4,7 +4,6 @@ from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQu
 from services.message_service import responder, start, callback
 from services.audio_service import handle_audio
 from services.location_service import receber_localizacao
-
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 async def main(update: Update, app: Application):

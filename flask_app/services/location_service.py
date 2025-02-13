@@ -8,6 +8,6 @@ async def receber_localizacao(update: Update, context: CallbackContext):
         latitude = update.message.location.latitude
         longitude = update.message.location.longitude
         endereco = coordenadas_para_endereco(latitude, longitude)
-        await update.message.reply_text(f"📍 Localização recebida!\nLatitude: {latitude}\nLongitude: {longitude}\nEndereço: {endereco}")
+        await update.message.reply_text(f"📍 Localização recebida!\nLatitude: {latitude}\nLongitude: {longitude}\nEndereço: {endereco}\n\n\nDeseja registrar mais alguma coisa? (sim/não)")
     else:
-        await update.message.reply_text("Não foi possível obter a sua localização.")
+        print("Não foi possível obter a sua localização.")
