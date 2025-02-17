@@ -1,0 +1,74 @@
+[
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836519, 'message': {'message_id': 1376, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824031, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836520, 'message': {'message_id': 1377, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824058, 'text': 'olá'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836521, 'message': {'message_id': 1378, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824777, 'text': 'o'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836522, 'message': {'message_id': 1379, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739824888, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836523, 'message': {'message_id': 1380, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739825227, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836524, 'message': {'message_id': 1381, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739825288, 'text': '.'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836525, 'message': {'message_id': 1388, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739826373, 'document': {'file_name': 'placa.jpg', 'mime_type': 'image/jpeg', 'thumbnail': {'file_id': 'AAMCAQADGQEAAgVsZ7OkxQb8vzG75mAgayQ5gTwI50sAAtMEAAJgwaFF_iKZanIFmvMBAAdtAAM2BA', 'file_unique_id': 'AQAD0wQAAmDBoUVy', 'file_size': 9136, 'width': 260, 'height': 148}, 'thumb': {'file_id': 'AAMCAQADGQEAAgVsZ7OkxQb8vzG75mAgayQ5gTwI50sAAtMEAAJgwaFF_iKZanIFmvMBAAdtAAM2BA', 'file_unique_id': 'AQAD0wQAAmDBoUVy', 'file_size': 9136, 'width': 260, 'height': 148}, 'file_id': 'BQACAgEAAxkBAAIFbGezpMUG_L8xu-ZgIGskOYE8COdLAALTBAACYMGhRf4imWpyBZrzNgQ', 'file_unique_id': 'AgAD0wQAAmDBoUU', 'file_size': 7932}}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836526, 'message': {'message_id': 1389, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739826407, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836527, 'callback_query': {'id': '6246856854148051911', 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'message': {'message_id': 1390, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739826408, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '1397692442455377517', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836528, 'callback_query': {'id': '6246856856359777915', 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'message': {'message_id': 1390, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739826408, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '1397692442455377517', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836529, 'message': {'message_id': 1392, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739826428, 'text': 'fui assaltada em taipu/rn'}}"
+    }
+]
