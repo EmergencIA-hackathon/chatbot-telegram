@@ -70,5 +70,9 @@
     {
         "tipo": "mensagem",
         "conteudo": "{'update_id': 383836529, 'message': {'message_id': 1392, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1739826428, 'text': 'fui assaltada em taipu/rn'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836747, 'message': {'message_id': 1643, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740427534, 'text': 'boa tarde'}}"
     }
 ]
