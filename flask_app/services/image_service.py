@@ -12,14 +12,12 @@ async def handle_image(update: Update, context: CallbackContext):
 async def processar_imagem_com_ocr(update: Update, context: CallbackContext):
     file = await context.bot.get_file(update.message.photo[-1].file_id)
     file_path = "imagem_recebida.jpg"
-    await file.download_to_drive(file_path)
+    await asyncio.to_thread(file.download_to_drive, file_path)
     
     try:
-        # Abre a imagem com Pillow
-        img = Image.open(file_path)
+        img = await asyncio.to_thread(Image.open, file_path)
 
-        # Usa pytesseract para fazer o OCR
-        texto = pytesseract.image_to_string(img)
+        texto = await asyncio.to_thread(pytesseract.image_to_string, img)
 
         # Usando regex para extrair o CPF ou emplacamento de veículo
         padrao_cpf = r"\d{3}\.\d{3}\.\d{3}-\d{2}"
@@ -44,6 +42,6 @@ async def processar_imagem_com_ocr(update: Update, context: CallbackContext):
     finally:
         # apagando o arquivo após o processamento
         if os.path.exists(file_path):
-            os.remove(file_path)
+            await asyncio.to_thread(os.remove, file_path)
     
     await context.bot.send_message(chat_id=update.message.chat_id, text=resposta)

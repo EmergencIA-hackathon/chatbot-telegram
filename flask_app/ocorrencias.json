@@ -74,5 +74,17 @@
     {
         "tipo": "mensagem",
         "conteudo": "{'update_id': 383836747, 'message': {'message_id': 1643, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740427534, 'text': 'boa tarde'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836846, 'message': {'message_id': 1754, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740442162, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836847, 'message': {'message_id': 1755, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740442227, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836848, 'message': {'message_id': 1756, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740506649, 'text': 'oi'}}"
     }
 ]

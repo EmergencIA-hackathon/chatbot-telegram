@@ -27,7 +27,6 @@ async def responder(update: Update, context: CallbackContext) -> None:
 
     if user_id in usuario_em_registro:
         if usuario_em_registro[user_id] == 'registrando_ocorrencia':
-            # Registrar ocorrência
             if texto_mensagem:
                 await update.message.reply_text(
                     f"📝 Ocorrência registrada: {texto_mensagem}\n"
@@ -47,14 +46,12 @@ async def responder(update: Update, context: CallbackContext) -> None:
                 await update.message.reply_text("Desculpe, não entendi sua resposta. Deseja registrar mais alguma coisa? (sim/não)")
 
     else:
-        # Detectar saudação usando regex para capturar variações
         padrao_saudacao = r"\b(olá|oi{1,3}|bom dia|boa tarde|boa noite|ei|hello|hey|salve)\b"
         if re.search(padrao_saudacao, texto_mensagem):
             await start(update, context)
         elif texto_mensagem == "tchau":
             await update.message.reply_text("Tchau! Tenha um ótimo dia!")
         else:
-            # Mensagem genérica para ocorrências não reconhecidas
             await update.message.reply_text(
                 "Desculpe, não entendi sua mensagem. Se for uma ocorrência, "
                 "envie texto, foto, áudio ou localização para registro."
