@@ -1,40 +1,24 @@
-import os
 from telegram import Update
+import os
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters
 from services.message_service import responder, start, callback
 from services.audio_service import handle_audio
 from services.location_service import receber_localizacao
 from services.image_service import handle_image
-
-
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
+async def main(update: Update, app: Application):
+    # Adicionando handlers
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
+    app.add_handler(CallbackQueryHandler(callback))
+    app.add_handler(MessageHandler(filters.AUDIO | filters.VOICE, handle_audio))
+    app.add_handler(MessageHandler(filters.LOCATION, receber_localizacao))
+    app.add_handler(MessageHandler(filters.PHOTO, handle_image))
 
-application = Application.builder().token(TOKEN).build()
+    print("Bot está processando a atualização...")
 
-
-# Adicionando handlers apenas uma vez
-application.add_handler(CommandHandler("start", start))
-application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
-application.add_handler(CallbackQueryHandler(callback))
-application.add_handler(MessageHandler(filters.AUDIO | filters.VOICE, handle_audio))
-application.add_handler(MessageHandler(filters.LOCATION, receber_localizacao))
-application.add_handler(MessageHandler(filters.PHOTO, handle_image))
-
-
-async def processar_update(update):
-   await application.initialize()
-   await application.process_update(update)
-
-
-async def start_bot():
-   """Inicializa e executa o bot"""
-   print("Iniciando bot...")
-   await application.initialize()
-   await application.start()
-   print("Bot iniciado!")
-
+    await app.process_update(update)
 
 if __name__ == "__main__":
-   import asyncio
-   asyncio.run(start_bot())
+    pass
