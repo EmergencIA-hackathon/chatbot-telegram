@@ -1,4 +1,4 @@
-from flask_app.controllers.bot_controller import main
+from flask_app.controllers.bot_controller import run_bot
 
 if __name__ == "__main__":
-    main()
+    run_bot()

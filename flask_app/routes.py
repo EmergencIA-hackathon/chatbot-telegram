@@ -1,18 +1,15 @@
+import os
+import json
+import asyncio
 from flask import Blueprint, request, jsonify
 from flask_app.controllers.bot_controller import processar_update
 from telegram import Update, Bot
 from telegram.ext import Application
-import os
-import json
-import asyncio
 import nest_asyncio
 
-
-# p/ evitar conflitos de loop
 nest_asyncio.apply()
 
 api = Blueprint('api', __name__)
-
 
 bot = Bot(token=os.getenv("TELEGRAM_BOT_TOKEN"))
 application = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
@@ -36,7 +33,6 @@ def salvar_ocorrencia(nova_ocorrencia):
    with open(JSON_FILE, "w", encoding="utf-8") as file:
        json.dump(ocorrencias, file, indent=4, ensure_ascii=False)
 
-
 async def start_bot():
    """Inicializa o bot de forma assíncrona"""
    await application.initialize()
@@ -46,11 +42,9 @@ async def start_bot():
 loop = asyncio.get_event_loop()
 loop.create_task(start_bot())
 
-
 @api.route('/')
 def index():
    return "Servidor Flask funcionando!"
-
 
 @api.route('/webhook', methods=['POST'])
 def webhook():
@@ -60,11 +54,8 @@ def webhook():
 
    salvar_ocorrencia({"tipo": "mensagem", "conteudo": str(data)})
 
-   # Garantir que a execução ocorra no loop correto sem criar um novo
    loop = asyncio.get_event_loop()
-   loop = asyncio.get_event_loop()
-   loop.create_task(processar_update(update))
-
+   loop.create_task(processar_update(update))  
 
    return jsonify({"message": "Webhook recebido"}), 200
 

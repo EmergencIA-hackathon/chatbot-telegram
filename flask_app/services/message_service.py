@@ -46,7 +46,7 @@ async def responder(update: Update, context: CallbackContext) -> None:
                 await update.message.reply_text("Desculpe, não entendi sua resposta. Deseja registrar mais alguma coisa? (sim/não)")
 
     else:
-        padrao_saudacao = r"\b(olá|oi{1,3}|bom dia|boa tarde|boa noite|ei|hello|hey|salve)\b"
+        padrao_saudacao = r"\b(olá|oi{1,3}|bom dia|boa tarde|boa noite|ei|hello|hey|salve|oi!|olá tudo bem?)\b"
         if re.search(padrao_saudacao, texto_mensagem):
             await start(update, context)
         elif texto_mensagem == "tchau":
@@ -61,6 +61,7 @@ async def responder(update: Update, context: CallbackContext) -> None:
 async def callback(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     user_id = query.from_user.id
+    print(f"Callback recebido com dados: {query.data}")  # Debug
     await query.answer()
 
     if query.data == "enquete_ocorrencia":

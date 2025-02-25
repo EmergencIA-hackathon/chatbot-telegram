@@ -86,5 +86,61 @@
     {
         "tipo": "mensagem",
         "conteudo": "{'update_id': 383836848, 'message': {'message_id': 1756, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740506649, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836849, 'message': {'message_id': 1758, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509389, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836850, 'message': {'message_id': 1759, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509559, 'text': 'boa tarde'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836851, 'message': {'message_id': 1760, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509763, 'text': 'olá'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836852, 'message': {'message_id': 1761, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740509839, 'voice': {'duration': 3, 'mime_type': 'audio/ogg', 'file_id': 'AwACAgEAAxkBAAIG4We-Eo_BuD34km67ybbUDpx38KFBAAInBQACiOXxRaKcm9t7RIcSNgQ', 'file_unique_id': 'AgADJwUAAojl8UU', 'file_size': 14371}}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836853, 'message': {'message_id': 1762, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740510258, 'document': {'file_name': '5001759660285472172.jpg', 'mime_type': 'image/jpeg', 'thumbnail': {'file_id': 'AAMCAQADGQEAAgbiZ74UMnXFwrMLzD9koqMNfA6xpd8AAioFAAKI5fFFRswpNg_HYaIBAAdtAAM2BA', 'file_unique_id': 'AQADKgUAAojl8UVy', 'file_size': 10032, 'width': 320, 'height': 320}, 'thumb': {'file_id': 'AAMCAQADGQEAAgbiZ74UMnXFwrMLzD9koqMNfA6xpd8AAioFAAKI5fFFRswpNg_HYaIBAAdtAAM2BA', 'file_unique_id': 'AQADKgUAAojl8UVy', 'file_size': 10032, 'width': 320, 'height': 320}, 'file_id': 'BQACAgEAAxkBAAIG4me-FDJ1xcKzC8w_ZKKjDXwOsaXfAAIqBQACiOXxRUbMKTYPx2GiNgQ', 'file_unique_id': 'AgADKgUAAojl8UU', 'file_size': 35355}}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836854, 'message': {'message_id': 1763, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740511066, 'text': 'boa tarde'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836855, 'message': {'message_id': 1764, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740511614, 'text': 'boa noite'}}"
     }
 ]
