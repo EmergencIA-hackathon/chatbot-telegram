@@ -23,8 +23,6 @@ async def responder(update: Update, context: CallbackContext) -> None:
     texto_mensagem = update.message.text.strip().lower()
     user_id = update.message.from_user.id
 
-    print(f"Mensagem recebida: {texto_mensagem}")  # Debug
-
     if user_id in usuario_em_registro:
         if usuario_em_registro[user_id] == 'registrando_ocorrencia':
             if texto_mensagem:

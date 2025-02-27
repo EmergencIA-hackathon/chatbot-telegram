@@ -7,13 +7,13 @@ from telegram import Update
 from telegram.ext import CallbackContext
 import asyncio
 
+def baixar_audio(file_url: str):
+    return requests.get(file_url)
+
 async def transcrever_audio(file_url: str) -> str:
     recognizer = sr.Recognizer()
     
-    async def baixar_audio():
-        return requests.get(file_url)
-    
-    audio_response = await asyncio.to_thread(baixar_audio)
+    audio_response = await asyncio.to_thread(baixar_audio, file_url)
     
     if audio_response.status_code == 200:
         audio_data = BytesIO(audio_response.content)
@@ -23,8 +23,8 @@ async def transcrever_audio(file_url: str) -> str:
                 await asyncio.to_thread(audio.export, temp_wav_file, format="wav")
                 temp_wav_file.seek(0)
                 with sr.AudioFile(temp_wav_file.name) as source:
-                    audio = recognizer.record(source)
-                    return await asyncio.to_thread(recognizer.recognize_google, audio, language='pt-BR')
+                    audio_content = recognizer.record(source)
+                    return await asyncio.to_thread(recognizer.recognize_google, audio_content, language='pt-BR')
         except Exception as e:
             return f"Erro ao processar o áudio: {str(e)}"
     return "Erro ao baixar o áudio."

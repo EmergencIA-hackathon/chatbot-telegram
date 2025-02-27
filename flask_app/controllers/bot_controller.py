@@ -1,19 +1,19 @@
 import os
-import json
+import asyncio
+import threading
 from telegram import Update, Bot
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters
 from flask_app.services.message_service import responder, start, callback
 from flask_app.services.audio_service import handle_audio
 from flask_app.services.location_service import receber_localizacao
 from flask_app.services.image_service import handle_image
-import asyncio
 
-# Configuração do bot
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 bot = Bot(token=TOKEN)
+
 application = Application.builder().token(TOKEN).build()
 
-# Handlers
+# Configuração dos handlers
 application.add_handler(CommandHandler("start", start))
 application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
 application.add_handler(CallbackQueryHandler(callback))
@@ -21,23 +21,24 @@ application.add_handler(MessageHandler(filters.AUDIO | filters.VOICE, handle_aud
 application.add_handler(MessageHandler(filters.LOCATION, receber_localizacao))
 application.add_handler(MessageHandler(filters.PHOTO, handle_image))
 
-# Função de processamento de atualizações
-async def processar_update(update: Update):
-    print(f"Atualização recebida: {update}")  # Debug
+async def initialize_bot():
+    """Inicializa o Application uma única vez (sem polling, pois usaremos webhook)."""
     await application.initialize()
-    await application.process_update(update)
 
-# Função principal que roda o bot com o webhook
-async def run_bot():
-    """Inicializa e executa o bot de forma assíncrona"""
-    print("Iniciando bot...")
-    await application.initialize()
-    await application.start()
+global_loop = asyncio.new_event_loop()
 
-if __name__ == "__main__":
-    import nest_asyncio
-    nest_asyncio.apply() 
-
-    loop = asyncio.get_event_loop()
-    loop.create_task(run_bot())
+def run_loop(loop):
+    asyncio.set_event_loop(loop)
     loop.run_forever()
+
+global_loop.run_until_complete(initialize_bot())
+
+threading.Thread(target=run_loop, args=(global_loop,), daemon=True).start()
+
+def get_loop():
+    """Retorna o loop global para uso em outros módulos."""
+    return global_loop
+
+async def processar_update(update: Update):
+    """Processa a atualização recebida via webhook."""
+    await application.process_update(update)
