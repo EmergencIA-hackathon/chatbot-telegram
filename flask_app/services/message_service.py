@@ -1,9 +1,12 @@
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext
 import re
+import requests
+import datetime
 
-# mapeando se o usuário já respondeu a enquete
-usuario_em_registro = {}
+usuario_ocorrencias = {}
+
+API_URL = "http://localhost:5000/ocorrencias"
 
 async def start(update: Update, context: CallbackContext) -> None:
     resposta = (
@@ -18,52 +21,79 @@ async def start(update: Update, context: CallbackContext) -> None:
     ])
     await update.message.reply_text(resposta, reply_markup=teclado)
 
-# lidar com texto
 async def responder(update: Update, context: CallbackContext) -> None:
-    texto_mensagem = update.message.text.strip().lower()
+    texto_mensagem = update.message.text.strip()
     user_id = update.message.from_user.id
+    user_name = update.message.from_user.first_name
 
-    if user_id in usuario_em_registro:
-        if usuario_em_registro[user_id] == 'registrando_ocorrencia':
-            if texto_mensagem:
-                await update.message.reply_text(
-                    f"📝 Ocorrência registrada: {texto_mensagem}\n"
-                    "Deseja registrar mais alguma coisa? (sim/não)"
-                )
-                usuario_em_registro[user_id] = 'esperando_confirmacao'
-                return
+    padrao_saudacao = r"\b(olá|oi{1,3}|bom dia|boa tarde|boa noite|ei|hello|hey|salve|oi!|olá tudo bem?|oi bot)\b"
+    
+    if user_id in usuario_ocorrencias:
+        estado = usuario_ocorrencias[user_id]["estado"]
+        
+        if estado == 'registrando_ocorrencia':
+            usuario_ocorrencias[user_id]["ocorrencia"] += f" {texto_mensagem}"
 
-        elif usuario_em_registro[user_id] == 'esperando_confirmacao':
-            if texto_mensagem in ['sim', 's']:
-                await update.message.reply_text("Por favor, envie sua próxima ocorrência.")
-                usuario_em_registro[user_id] = 'registrando_ocorrencia'
-            elif texto_mensagem in ['não', 'nao', 'não quero mais registrar']:
-                await update.message.reply_text("Obrigado por registrar sua ocorrência. Fique à vontade para voltar quando precisar.")
-                del usuario_em_registro[user_id]
+            await update.message.reply_text(
+                f"📝 Ocorrência atualizada: {usuario_ocorrencias[user_id]['ocorrencia']}\n"
+                "Deseja adicionar mais alguma informação? (sim/não)"
+            )
+            usuario_ocorrencias[user_id]["estado"] = 'esperando_confirmacao'
+
+        elif estado == 'esperando_confirmacao':
+            if texto_mensagem.lower() in ['sim', 's']:
+                await update.message.reply_text("Pode continuar descrevendo a ocorrência.")
+                usuario_ocorrencias[user_id]["estado"] = 'registrando_ocorrencia'
+
+            elif texto_mensagem.lower() in ['não', 'nao', 'não quero mais registrar']:
+                ocorrencia_final = usuario_ocorrencias[user_id]["ocorrencia"].strip()
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+                dados_ocorrencia = {
+                    "tipo": "mensagem",
+                    "chat_id": user_id,
+                    "usuario": user_name,
+                    "data_hora": timestamp,
+                    "conteudo": ocorrencia_final
+                }
+
+                response = requests.post(API_URL, json=dados_ocorrencia)
+
+                if response.status_code == 201:
+                    await update.message.reply_text("✅ Sua ocorrência foi registrada com sucesso!")
+                else:
+                    await update.message.reply_text(f"❌ Erro ao registrar ocorrência: {response.status_code}, {response.text}")
+
+                del usuario_ocorrencias[user_id]  # Remove a ocorrência finalizada
             else:
-                await update.message.reply_text("Desculpe, não entendi sua resposta. Deseja registrar mais alguma coisa? (sim/não)")
+                await update.message.reply_text("Desculpe, não entendi sua resposta. Deseja adicionar mais alguma informação? (sim/não)")
 
     else:
-        padrao_saudacao = r"\b(olá|oi{1,3}|bom dia|boa tarde|boa noite|ei|hello|hey|salve|oi!|olá tudo bem?)\b"
-        if re.search(padrao_saudacao, texto_mensagem):
+        if re.fullmatch(padrao_saudacao, texto_mensagem.lower()) or len(texto_mensagem.split()) <= 2:
             await start(update, context)
-        elif texto_mensagem == "tchau":
+        elif texto_mensagem.lower() == "tchau":
             await update.message.reply_text("Tchau! Tenha um ótimo dia!")
         else:
+            usuario_ocorrencias[user_id] = {
+                "estado": "registrando_ocorrencia",
+                "ocorrencia": texto_mensagem
+            }
             await update.message.reply_text(
-                "Desculpe, não entendi sua mensagem. Se for uma ocorrência, "
-                "envie texto, foto, áudio ou localização para registro."
+                f"📝 Ocorrência registrada: {texto_mensagem}\n"
+                "Deseja adicionar mais alguma informação? (sim/não)"
             )
+            usuario_ocorrencias[user_id]["estado"] = 'esperando_confirmacao'
 
-# callback para botões da enquete
 async def callback(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     user_id = query.from_user.id
-    print(f"Callback recebido com dados: {query.data}")  # Debug
     await query.answer()
 
     if query.data == "enquete_ocorrencia":
-        usuario_em_registro[user_id] = 'registrando_ocorrencia'
+        usuario_ocorrencias[user_id] = {
+            "estado": "registrando_ocorrencia",
+            "ocorrencia": ""
+        }
         await query.message.reply_text(
             "📝 Perfeito! Envie agora sua ocorrência. Pode ser uma descrição por texto, foto, áudio ou localização."
         )

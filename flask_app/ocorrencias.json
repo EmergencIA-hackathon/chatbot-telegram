@@ -1,11 +1,1 @@
-[
-    {},
-    {
-        "tipo": "mensagem",
-        "conteudo": "{'update_id': 383836979, 'message': {'message_id': 1956, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740620012, 'text': 'oi'}}"
-    },
-    {
-        "tipo": "mensagem",
-        "conteudo": "{'update_id': 383836980, 'callback_query': {'id': '6246856854926800577', 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'message': {'message_id': 1957, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740620013, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '1397692442455377517', 'data': 'enquete_servico'}}"
-    }
-]
+[{}]
