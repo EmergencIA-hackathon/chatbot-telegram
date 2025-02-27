@@ -7,5 +7,173 @@
     {
         "tipo": "mensagem",
         "conteudo": "{'update_id': 383836980, 'callback_query': {'id': '6246856854926800577', 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'message': {'message_id': 1957, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740620013, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '1397692442455377517', 'data': 'enquete_servico'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836982, 'message': {'message_id': 1960, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740675874, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836983, 'message': {'message_id': 1961, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740675880, 'text': 'oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836981, 'message': {'message_id': 1959, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740675778, 'contact': {'phone_number': '5584991423660', 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'user_id': 8047018479}}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836984, 'message': {'message_id': 1962, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740676003, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836985, 'message': {'message_id': 1963, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740676007, 'text': 'Olá'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836986, 'message': {'message_id': 1964, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740676018, 'text': 'Me responde boy safado'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836987, 'edited_message': {'message_id': 1964, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740676018, 'edit_date': 1740676027, 'text': 'Me responde bot safado'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836988, 'message': {'message_id': 1969, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740676310, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383836989, 'message': {'message_id': 1970, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740676313, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837004, 'message': {'message_id': 1996, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677168, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837005, 'callback_query': {'id': '6891565089116036795', 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'message': {'message_id': 1997, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677173, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '-590870345390580196', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837006, 'message': {'message_id': 1999, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677181, 'photo': [{'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADcwADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ4', 'file_size': 958, 'width': 90, 'height': 51}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADbQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZy', 'file_size': 11180, 'width': 320, 'height': 180}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeAADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ9', 'file_size': 52707, 'width': 800, 'height': 450}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ-', 'file_size': 104582, 'width': 1280, 'height': 720}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837007, 'message': {'message_id': 2000, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677183, 'text': 'Fui roubado em Natal, na Avenida Prudente de Morais às 21h do dia 21/02/2025, um homem armado levou a minha carteira com meu documento e 20 reais'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837008, 'message': {'message_id': 2003, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677210, 'text': 'Fui roubado em Natal'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837009, 'message': {'message_id': 2005, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677215, 'text': 'Fui roubado'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837010, 'message': {'message_id': 2007, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740677365, 'text': 'fui assaltada'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837011, 'message': {'message_id': 2009, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740677372, 'text': 'fui assaltada'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837012, 'message': {'message_id': 2011, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740677379, 'text': 'olá'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837013, 'callback_query': {'id': '6246856854792416066', 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'message': {'message_id': 2012, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740677380, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '1397692442455377517', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837014, 'message': {'message_id': 2014, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677443, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837015, 'message': {'message_id': 2015, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677449, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837016, 'callback_query': {'id': '1633472442154197049', 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'message': {'message_id': 2016, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677450, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '-1130917272050163072', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837017, 'message': {'message_id': 2018, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740677460, 'text': 'fui assaltada'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837018, 'message': {'message_id': 2019, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677461, 'text': 'Fui roubado em Natal'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837019, 'message': {'message_id': 2022, 'from': {'id': 7896910646, 'is_bot': False, 'first_name': 'Jennifer', 'language_code': 'pt-br'}, 'chat': {'id': 7896910646, 'first_name': 'Jennifer', 'type': 'private'}, 'date': 1740677464, 'text': 'não'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837020, 'message': {'message_id': 2024, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677467, 'text': 'Não'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837021, 'message': {'message_id': 2026, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677473, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837022, 'callback_query': {'id': '1633472445834979272', 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'message': {'message_id': 2027, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677474, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '-1130917272050163072', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837023, 'message': {'message_id': 2029, 'from': {'id': 6822773384, 'is_bot': False, 'first_name': 'Pedro', 'last_name': 'Aug', 'language_code': 'pt-br'}, 'chat': {'id': 6822773384, 'first_name': 'Pedro', 'last_name': 'Aug', 'type': 'private'}, 'date': 1740677483, 'text': 'Fui roubado em Ceará-Mirim'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837024, 'message': {'message_id': 2031, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677528, 'photo': [{'file_id': 'AgACAgEAAxkBAAIH72fAoZjVZmWw9vZxWb4Pg8LxVm_JAAJGrjEbtCIBRrKMUbJ4TtDHAQADAgADcwADNgQ', 'file_unique_id': 'AQADRq4xG7QiAUZ4', 'file_size': 615, 'width': 90, 'height': 31}, {'file_id': 'AgACAgEAAxkBAAIH72fAoZjVZmWw9vZxWb4Pg8LxVm_JAAJGrjEbtCIBRrKMUbJ4TtDHAQADAgADbQADNgQ', 'file_unique_id': 'AQADRq4xG7QiAUZy', 'file_size': 5338, 'width': 320, 'height': 110}, {'file_id': 'AgACAgEAAxkBAAIH72fAoZjVZmWw9vZxWb4Pg8LxVm_JAAJGrjEbtCIBRrKMUbJ4TtDHAQADAgADeAADNgQ', 'file_unique_id': 'AQADRq4xG7QiAUZ9', 'file_size': 16747, 'width': 800, 'height': 275}, {'file_id': 'AgACAgEAAxkBAAIH72fAoZjVZmWw9vZxWb4Pg8LxVm_JAAJGrjEbtCIBRrKMUbJ4TtDHAQADAgADeQADNgQ', 'file_unique_id': 'AQADRq4xG7QiAUZ-', 'file_size': 20045, 'width': 960, 'height': 330}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837025, 'message': {'message_id': 2033, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677768, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837026, 'callback_query': {'id': '6891565089867290827', 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'message': {'message_id': 2034, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677769, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '-590870345390580196', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837027, 'message': {'message_id': 2036, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677776, 'photo': [{'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADcwADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ4', 'file_size': 958, 'width': 90, 'height': 51}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADbQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZy', 'file_size': 11180, 'width': 320, 'height': 180}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeAADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ9', 'file_size': 52707, 'width': 800, 'height': 450}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ-', 'file_size': 104582, 'width': 1280, 'height': 720}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837028, 'message': {'message_id': 2038, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677982, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837029, 'callback_query': {'id': '6891565087782523801', 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'message': {'message_id': 2039, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677982, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '-590870345390580196', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837030, 'message': {'message_id': 2041, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740677989, 'photo': [{'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADcwADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ4', 'file_size': 958, 'width': 90, 'height': 51}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADbQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZy', 'file_size': 11180, 'width': 320, 'height': 180}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeAADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ9', 'file_size': 52707, 'width': 800, 'height': 450}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ-', 'file_size': 104582, 'width': 1280, 'height': 720}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837031, 'message': {'message_id': 2043, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740678335, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837032, 'callback_query': {'id': '6891565088893399862', 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'message': {'message_id': 2044, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740678336, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '-590870345390580196', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837033, 'message': {'message_id': 2046, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740678341, 'photo': [{'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADcwADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ4', 'file_size': 958, 'width': 90, 'height': 51}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADbQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZy', 'file_size': 11180, 'width': 320, 'height': 180}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeAADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ9', 'file_size': 52707, 'width': 800, 'height': 450}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ-', 'file_size': 104582, 'width': 1280, 'height': 720}]}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837034, 'message': {'message_id': 2048, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740678544, 'text': 'Oi'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837035, 'callback_query': {'id': '6891565089688222112', 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'message': {'message_id': 2049, 'from': {'id': 7729451424, 'is_bot': True, 'first_name': 'emergêncIA_bot', 'username': 'testando_telepotpy_bot'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740678545, 'text': 'Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\\nPosso te ajudar a registrar algo?', 'reply_markup': {'inline_keyboard': [[{'text': 'Sim, registrar ocorrência', 'callback_data': 'enquete_ocorrencia'}, {'text': 'Quero saber mais sobre o serviço', 'callback_data': 'enquete_servico'}]]}}, 'chat_instance': '-590870345390580196', 'data': 'enquete_ocorrencia'}}"
+    },
+    {
+        "tipo": "mensagem",
+        "conteudo": "{'update_id': 383837036, 'message': {'message_id': 2051, 'from': {'id': 8047018479, 'is_bot': False, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'language_code': 'pt-br'}, 'chat': {'id': 8047018479, 'first_name': 'JOÃO FELIPE', 'last_name': 'SOUZA', 'type': 'private'}, 'date': 1740678550, 'photo': [{'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADcwADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ4', 'file_size': 958, 'width': 90, 'height': 51}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADbQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZy', 'file_size': 11180, 'width': 320, 'height': 180}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeAADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ9', 'file_size': 52707, 'width': 800, 'height': 450}, {'file_id': 'AgACAgEAAxkBAAIHvWfAncaR7bMHhkiR430fQjybe8asAAJFrjEbtCIBRt9ti2E-lIOJAQADAgADeQADNgQ', 'file_unique_id': 'AQADRa4xG7QiAUZ-', 'file_size': 104582, 'width': 1280, 'height': 720}]}}"
     }
 ]
