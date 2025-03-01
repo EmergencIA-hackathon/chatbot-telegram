@@ -1,16 +1,19 @@
-from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
-from telegram.ext import CallbackContext
 import re
 import requests
 import datetime
+import os
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram.ext import CallbackContext
+from session import usuario_ocorrencias
+from dotenv import load_dotenv
 
-usuario_ocorrencias = {}
+load_dotenv()
 
-API_URL = "http://localhost:5000/ocorrencias"
+api_url = os.getenv("API_URL")
 
 async def start(update: Update, context: CallbackContext) -> None:
     resposta = (
-        "Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências.\n"
+        "Olá! 👋 Sou o EmergêncIA, um bot de registro de ocorrências. "
         "Posso te ajudar a registrar algo?"
     )
     teclado = InlineKeyboardMarkup([
@@ -32,11 +35,18 @@ async def responder(update: Update, context: CallbackContext) -> None:
         estado = usuario_ocorrencias[user_id]["estado"]
         
         if estado == 'registrando_ocorrencia':
-            usuario_ocorrencias[user_id]["ocorrencia"] += f" {texto_mensagem}"
+            usuario_ocorrencias[user_id]["ocorrencia"] += f"\n{texto_mensagem}"
 
+            teclado = InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(text="Sim", callback_data="sim_ocorrencia"),
+                    InlineKeyboardButton(text="Não", callback_data="nao_ocorrencia")
+                ]
+            ])
             await update.message.reply_text(
                 f"📝 Ocorrência atualizada: {usuario_ocorrencias[user_id]['ocorrencia']}\n"
-                "Deseja adicionar mais alguma informação? (sim/não)"
+                "Deseja adicionar mais alguma informação? (sim/não)",
+                reply_markup=teclado
             )
             usuario_ocorrencias[user_id]["estado"] = 'esperando_confirmacao'
 
@@ -57,17 +67,16 @@ async def responder(update: Update, context: CallbackContext) -> None:
                     "conteudo": ocorrencia_final
                 }
 
-                response = requests.post(API_URL, json=dados_ocorrencia)
+                response = requests.post(api_url, json=dados_ocorrencia)
 
                 if response.status_code == 201:
                     await update.message.reply_text("✅ Sua ocorrência foi registrada com sucesso!")
                 else:
                     await update.message.reply_text(f"❌ Erro ao registrar ocorrência: {response.status_code}, {response.text}")
 
-                del usuario_ocorrencias[user_id]  # Remove a ocorrência finalizada
+                del usuario_ocorrencias[user_id] 
             else:
                 await update.message.reply_text("Desculpe, não entendi sua resposta. Deseja adicionar mais alguma informação? (sim/não)")
-
     else:
         if re.fullmatch(padrao_saudacao, texto_mensagem.lower()) or len(texto_mensagem.split()) <= 2:
             await start(update, context)
@@ -78,9 +87,16 @@ async def responder(update: Update, context: CallbackContext) -> None:
                 "estado": "registrando_ocorrencia",
                 "ocorrencia": texto_mensagem
             }
+
+            teclado = InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(text="Sim", callback_data="sim_ocorrencia"),
+                    InlineKeyboardButton(text="Não", callback_data="nao_ocorrencia")
+                ]
+            ])
             await update.message.reply_text(
-                f"📝 Ocorrência registrada: {texto_mensagem}\n"
-                "Deseja adicionar mais alguma informação? (sim/não)"
+                f"📝 Ocorrência registrada: {texto_mensagem}\nDeseja adicionar mais alguma informação? (sim/não)",
+                reply_markup=teclado
             )
             usuario_ocorrencias[user_id]["estado"] = 'esperando_confirmacao'
 
@@ -106,3 +122,26 @@ async def callback(update: Update, context: CallbackContext) -> None:
             "📍 Localizações\n"
             "Nosso time de agentes analisará cada caso e entrará em contato se necessário."
         )
+    elif query.data == "sim_ocorrencia":
+        await query.message.reply_text("Pode continuar descrevendo a ocorrência.")
+        usuario_ocorrencias[user_id]["estado"] = 'registrando_ocorrencia'
+    elif query.data == "nao_ocorrencia":
+        ocorrencia_final = usuario_ocorrencias[user_id]["ocorrencia"].strip()
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        dados_ocorrencia = {
+            "tipo": "mensagem",
+            "chat_id": user_id,
+            "usuario": query.from_user.first_name,
+            "data_hora": timestamp,
+            "conteudo": ocorrencia_final
+        }
+
+        response = requests.post(api_url, json=dados_ocorrencia)
+
+        if response.status_code == 201:
+            await query.message.reply_text("✅ Sua ocorrência foi registrada com sucesso!")
+        else:
+            await query.message.reply_text(f"❌ Erro ao registrar ocorrência: {response.status_code}, {response.text}")
+
+        del usuario_ocorrencias[user_id]

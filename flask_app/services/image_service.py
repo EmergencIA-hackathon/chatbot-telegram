@@ -6,7 +6,7 @@ import asyncio
 import re
 import os
 
-## OCR CPF NÃO ESTÁ FUNCIONANDO!!
+#FALTA: AJEITAR OCRS // ADD DADO EXTRAÍDO OU ARQUIVO NO RESUMO DA OCORRENCIA P/ ENVIAR P API
 
 async def handle_image(update: Update, context: CallbackContext):
     await processar_imagem_com_ocr(update, context)
@@ -39,7 +39,6 @@ async def processar_imagem_com_ocr(update: Update, context: CallbackContext):
         # Realiza OCR usando Tesseract com configuração customizada
         custom_config = r'--oem 3 --psm 6'
         texto = await asyncio.to_thread(pytesseract.image_to_string, img, config=custom_config)
-        print("OCR Result:", texto)
         
         # Regex para identificar CPF e placa:
         padrao_cpf = r"(\d{3}[\.]?\d{3}[\.]?\d{3}[-]?\d{2})"
