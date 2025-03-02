@@ -1,9 +1,10 @@
 import os
 import json
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, redirect, request, jsonify, session
 from telegram import Update
 from flask_app.controllers.bot_controller import processar_update, bot, get_loop
 import asyncio
+import aiohttp
 import nest_asyncio
 from datetime import datetime
 
@@ -12,6 +13,8 @@ nest_asyncio.apply()
 api = Blueprint('api', __name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 JSON_FILE = os.path.join(BASE_DIR, "ocorrencias.json")
+
+cached_data = {"data": None}
 
 def carregar_ocorrencias():
     if not os.path.exists(JSON_FILE):
@@ -28,6 +31,13 @@ def salvar_ocorrencia(nova_ocorrencia):
     ocorrencias.append(nova_ocorrencia)
     with open(JSON_FILE, "w", encoding="utf-8") as file:
         json.dump(ocorrencias, file, indent=4, ensure_ascii=False)
+
+async def acionar_agentes(text):
+    url = "http://app:3000/api/agentes/escrivao/transcrever"
+    data = { "texto_informal": text }
+    async with aiohttp.ClientSession() as session:
+        async with session.post(url, json=data) as response:
+            return await response.json()
 
 @api.route('/')
 def index():
@@ -59,9 +69,11 @@ def webhook():
             "conteudo": text
         }
 
+
         salvar_ocorrencia(nova_ocorrencia)
         asyncio.run_coroutine_threadsafe(processar_update(Update.de_json(data, bot=bot)), get_loop())
-        return jsonify({"message": "Webhook recebido"}), 200
+        response = jsonify({"message": "Webhook recebido"})
+        return response, 200
 
     # verifica se é um callback de uma enquete ou botão
     elif "callback_query" in data:
@@ -78,10 +90,20 @@ def webhook():
 def listar_ocorrencias():
     return jsonify(carregar_ocorrencias())
 
+
 @api.route('/ocorrencias', methods=['POST'])
-def adicionar_ocorrencia():
+async def adicionar_ocorrencia():
     dados = request.json
     if all(k in dados for k in ["tipo", "conteudo", "chat_id", "usuario", "data_hora"]):
         salvar_ocorrencia(dados)
+        text = dados["conteudo"]
+        cached_data["data"] = await acionar_agentes(text)
         return jsonify({"mensagem": "Ocorrência registrada com sucesso!"}), 201
     return jsonify({"erro": "Formato inválido. Certifique-se de enviar 'tipo', 'conteudo', 'chat_id', 'usuario' e 'data_hora'."}), 400
+
+@api.get('/dados')
+def dados_api_agentes():
+    if (cached_data.get("data") != None):
+        return jsonify(cached_data.get("data"))
+    
+    return jsonify({"Mensagem":"Tem nada aqui não, paizão"})
