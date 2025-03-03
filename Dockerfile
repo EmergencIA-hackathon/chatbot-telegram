@@ -13,6 +13,7 @@ WORKDIR /app
 
 # Copiar e instalar dependências
 COPY requirements.txt .
+COPY set_webhook.sh /app/
 RUN pip install aiohttp
 RUN pip install --no-cache-dir -r requirements.txt
 

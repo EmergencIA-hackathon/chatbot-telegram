@@ -32,6 +32,9 @@ async def receber_localizacao(update: Update, context: CallbackContext):
                 usuario_ocorrencias[user_id]["estado"] = 'esperando_confirmacao'
 
         else:
+            if usuario_ocorrencias[user_id]["estado"] == "registrando_ocorrencia":
+                return
+
             usuario_ocorrencias[user_id] = {
                 "estado": "registrando_ocorrencia",
                 "ocorrencia": f"📍 Localização: {endereco} (Latitude: {latitude}, Longitude: {longitude})"

@@ -20,13 +20,13 @@ services:
     working_dir: /app/flask_app    
     depends_on:
       - ngrok
-    command: ["python", "app.py"] 
+    command: ["/bin/bash", "-c", "/app/set_webhook.sh && python /app/flask_app/app.py"]
 
   ngrok:
-    image: wernight/ngrok
+    image: ngrok/ngrok
     container_name: ngrok
     environment:
-      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN} 
-      - NGROK_PORT=telegram-bot:5000
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    command: ["http", "telegram-bot:5000", "--hostname=civil-intimate-bedbug.ngrok-free.app"]
     ports:
-      - "4041:4040"  # Porta para acessar o dashboard do ngrok e ver os túneis
+      - "4041:4040"
