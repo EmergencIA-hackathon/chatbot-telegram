@@ -125,5 +125,47 @@
         "usuario": "JOÃO FELIPE",
         "data_hora": "2025-03-03 16:19:37",
         "conteudo": "Oi"
+    },
+    {
+        "tipo": "mensagem",
+        "chat_id": 8047018479,
+        "usuario": "JOÃO FELIPE",
+        "data_hora": "2025-03-03 16:41:08",
+        "conteudo": "Oi"
+    },
+    {
+        "tipo": "mensagem",
+        "chat_id": 8047018479,
+        "usuario": "JOÃO FELIPE",
+        "data_hora": "2025-03-03 16:41:18",
+        "conteudo": "Mensagem sem texto"
+    },
+    {
+        "tipo": "mensagem",
+        "chat_id": 8047018479,
+        "usuario": "JOÃO FELIPE",
+        "data_hora": "2025-03-03 16:41:58",
+        "conteudo": "Eu estava dirigindo um caminhão e acabei cochichando e bati em um animal na estrada."
+    },
+    {
+        "tipo": "mensagem",
+        "chat_id": 8047018479,
+        "usuario": "JOÃO FELIPE",
+        "data_hora": "2025-03-03 16:42:14",
+        "conteudo": "Mensagem sem texto"
+    },
+    {
+        "tipo": "mensagem",
+        "chat_id": 8047018479,
+        "usuario": "JOÃO FELIPE",
+        "data_hora": "2025-03-03 16:42:31",
+        "conteudo": "Mensagem sem texto"
+    },
+    {
+        "tipo": "mensagem",
+        "chat_id": 8047018479,
+        "usuario": "JOÃO FELIPE",
+        "data_hora": "2025-03-03 16:45:50",
+        "conteudo": "Mensagem sem texto"
     }
 ]
