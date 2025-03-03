@@ -111,8 +111,18 @@ async def callback(update: Update, context: CallbackContext) -> None:
             "ocorrencia": ""
         }
         await query.message.reply_text(
-            "📝 Perfeito! Envie agora sua ocorrência. Pode ser uma descrição por texto, foto, áudio ou localização."
+            "📝 <b>ENVIE AGORA SUA OCORRÊNCIA</b>\n\n"
+            "Para que possamos te ajudar da melhor forma possível, comece enviando sua documentação pessoal, como sua <b>identidade (RG)</b>. Caso não esteja com ela no momento, não se preocupe! Você pode continuar o envio normalmente, informando seu <b>nome completo e CPF</b>.\n\n"
+            "🔹 <b>Importante:</b> Em casos de <b>violência contra a mulher</b> ou <b>tráfico</b>, não é necessário se identificar, pois a denúncia pode ser <b>anônima</b>.\n\n"
+            "📌 <b>SUA OCORRÊNCIA PODE CONTER:</b>\n\n"
+            "📍 <b>Sua localização</b> – Você pode digitá-la, falar ou enviá-la tocando no símbolo 📎 e selecionando <b>Localização</b>.\n\n"
+            "📝 <b>Descrição detalhada</b> – Explique com o máximo de detalhes o que aconteceu.\n\n"
+            "🎙️ <b>Áudios</b> – Respire fundo, mantenha a calma e fale de forma clara para que possamos entender melhor.\n\n"
+            "📷 <b>Imagens</b> – Caso tenha fotos que possam ajudar, envie-as. Podem ser <b>documentos, veículos, locais ou até mesmo suspeitos</b> (se houver).\n\n"
+            "⚠️ <b>Manter a calma é essencial!</b> Quanto mais informações você nos enviar, mais rápido poderemos agir. Após finalizar sua ocorrência, fique tranquilo, pois estaremos <b>trabalhando para te ajudar.</b>",
+            parse_mode="HTML"
         )
+
     elif query.data == "enquete_servico":
         await query.message.reply_text(
             "Nós registramos qualquer tipo de ocorrência, independente da situação. Conte com a gente para registrar e encaminhar seu relato! Você pode enviar:\n"
