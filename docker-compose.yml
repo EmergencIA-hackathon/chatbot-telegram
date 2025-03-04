@@ -27,6 +27,6 @@ services:
     container_name: ngrok
     environment:
       - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
-    command: ["http", "telegram-bot:5000", "--hostname=civil-intimate-bedbug.ngrok-free.app"]
+    command: ["http", "telegram-bot:5000", "--hostname=luckily-adapting-crawdad.ngrok-free.app"]
     ports:
       - "4041:4040"
