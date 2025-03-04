@@ -13,7 +13,7 @@ async def receber_arquivo(update: Update, context: CallbackContext) -> None:
     if user_id not in usuario_ocorrencias:
         usuario_ocorrencias[user_id] = {"estado": "registrando_ocorrencia", "ocorrencia": ""}
     
-    usuario_ocorrencias[user_id]["ocorrencia"] += f'\nDocumento: {documento.file_name} recebido com sucesso!\n\n'
+    usuario_ocorrencias[user_id]["ocorrencia"] += f'\nDocumento: {documento.file_name}\n'
     usuario_ocorrencias[user_id]["estado"] = 'esperando_confirmacao'
     
     teclado = InlineKeyboardMarkup([
